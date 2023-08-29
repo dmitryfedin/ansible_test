@@ -2,8 +2,8 @@
   become: true
   roles:
     - nginx
-  #  - mysql
-  #  - php
+    - mysql
+    - php
   tasks:
   - name: "Reload Nginx"
     ansible.builtin.service:
