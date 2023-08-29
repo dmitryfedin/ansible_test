@@ -1,0 +1,11 @@
+- hosts: "all"
+  become: true
+  roles:
+    - nginx
+  #  - mysql
+  #  - php
+  tasks:
+  - name: "Reload Nginx"
+    ansible.builtin.service:
+      name: "nginx"
+      state: "reloaded"

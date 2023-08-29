@@ -1,0 +1,8 @@
+# need sshpass for ansbile
+sudo apt install sshpass
+
+# change inventory/hosts.ini
+
+# check acsess
+ansible all -i inventory/hosts.ini -m ping -kK
+
