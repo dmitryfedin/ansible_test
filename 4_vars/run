@@ -1,0 +1,8 @@
+# for go in docker
+sudo ansible-galaxy collection install community.docker
+# run container
+docker-compose up -d
+# run ping and test connection
+sudo ansible all -m ping -i inventory/hosts.ini
+# or run playbook
+# sudo ansible-playbook playbook.yml -i inventory/hosts.ini 

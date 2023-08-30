@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  become: true
+  vars:
+    test_var: test_playbook
+    version: 7.0
+
+  tasks:
+  - name: "test_playbook"
+    ansible.builtin.debug:
+      msg: "variable set to {{ test_var }} {{ ansible_date_time }}"
+
+  - name: "Facts"
+    ansible.builtin.debug:
+      var: ansible_facts
+
