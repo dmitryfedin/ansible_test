@@ -1,0 +1,34 @@
+- name: "Install nginx apt"
+  ansible.builtin.apt:
+    name: nginx
+    update_cache: yes
+    state: latest
+
+- name: "Modify html folder permissions"
+  ansible.builtin.file:
+    path: /var/www/html
+    state: directory
+    owner: www-data
+    group: www-data
+
+- name: "Delete old folder"
+  ansible.builtin.file:
+    state: absent
+    path: /var/www/html
+
+- name: "Copy dist folder"
+  ansible.builtin.copy:
+    src: files/html
+    dest: /var/www/
+    owner: www-data
+    group: www-data
+    mode: 0644
+
+# if use copy dont change {{nginx_port}} in conf
+- name: "replace default config"
+  ansible.builtin.template:
+    src: files/default.ubuntu.conf.j2
+    dest: /etc/nginx/sites-available/default.conf
+    owner: www-data
+    group: www-data
+    mode: 0644
