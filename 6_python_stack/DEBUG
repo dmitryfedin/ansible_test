@@ -1,0 +1,16 @@
+# 95% all time
+1. asnible-playbook playbook.yml -vvvv 
+
+
+2. Debugger ставится к модулю
+
+tasks:
+- name:
+  apt:
+    ...
+    ...
+  debugger: always
+  # or debugger: on_fail
+  # need read doc
+
+3. asnible-playbook playbook.yml --step
