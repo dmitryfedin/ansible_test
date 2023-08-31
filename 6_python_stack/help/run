@@ -1,0 +1,4 @@
+ansible-playbook playbook.yml --ask-become -vvvv
+
+BUT NEED SYSTEMD INSIDE DOCKER
+# need hosts

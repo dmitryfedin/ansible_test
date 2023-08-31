@@ -1,0 +1,16 @@
+sudo docker build --build-arg HTTP_PROXY=http://130.100.7.222:1082 -t ansible_host_1 .
+sudo docker build --build-arg HTTP_PROXY=http://130.100.7.222:1082 -t ansible_host_2 .
+
+sudo docker run -d --publish 8183:80 --publish 1123:22 --restart always --name ansible_host_1 ansible_host_1
+sudo docker run -d --publish 8184:80 --publish 1124:22 --restart always --name ansible_host_2 ansible_host_1
+
+ssh-keygen -f keycontainer
+
+ssh thunder@localhost -p1124 -i ~/.ssh/keycontainer
+
+less ~/.ssh/config
+Host localhost
+        HostName localhost
+        User thunder
+        Port 2022
+        IdentityFile ~/.ssh/keycontainer

@@ -1,7 +1,7 @@
 ---
 - name: "Installing python"
   hosts: "no_python"
-  become: true
+  become: yes
   # use python in facts
   gather_facts: false
 
